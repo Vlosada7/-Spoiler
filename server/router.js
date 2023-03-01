@@ -7,7 +7,7 @@ router.post('/create', controller.create);
 router.get('/profile', controller.profile);
 router.post('/logout', controller.logout);
 router.get('/home', controller.getFav);
-// router.post();
+router.post('/home/id', controller.favShow);
 // router.get();
 
 module.exports = router;
