@@ -1,11 +1,12 @@
 import React from 'react';
 // import { Routes, Route } from 'react-router-dom';
 import './Dashboard.css';
+import Discovery from './Discovery';
 
 const Dashboard = () => {
   return (
     <div className='dashboard'>
-      <h3>Dashboard</h3>
+      <Discovery/>
     </div>
   )
 }
