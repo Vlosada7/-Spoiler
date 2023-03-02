@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import Content from './components/Content';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
         <Header/>
       </header>
       <div>
+        <Router>
         <Content/>
+        </Router>
       </div>
     </div>
   );

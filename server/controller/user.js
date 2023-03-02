@@ -19,6 +19,14 @@ const logout = (req, res) => {
 
 const getFav = async (req, res) => {
   console.log('Pegou a array de IDS');
+  const semFav = 'No shows yet';
+  try {
+    const all = await User.favShows.find({});
+    res.send(all);
+  } catch (error) {
+    console.log(error);
+  }
+  
   // const favs = await User.favTvShows.find({});
   // res.status(200);
   // res.send(favs);

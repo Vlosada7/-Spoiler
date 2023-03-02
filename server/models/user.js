@@ -18,7 +18,17 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  favTvShows: [Number]
+  favShows: [
+    {
+      id: {
+        type: Number,
+      }, 
+      addedAt: {
+        type: Date,
+        default: Date.now()
+      }
+    }
+  ]
 })
 
 const User = mongoose.model('User', userSchema);
