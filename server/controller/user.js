@@ -52,7 +52,9 @@ const deleteShow = async (req, res) => {
     if (!index) {
       return res.status(404).send('Show não encontrado na lista de favoritos');
     } else {
-      await User.updateOne({_id: _id}, { $pull: { favShows: showId.id}});
+      await User.updateOne(
+        {_id: _id}, 
+        { $pull: { favShows:{id: showId.id}}});
       res.status(201).json(showId);
     }
 

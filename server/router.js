@@ -8,7 +8,7 @@ router.get('/profile', controller.profile);
 router.post('/logout', controller.logout);
 router.get('/home', controller.getFav);
 router.post('/show/:id', controller.favShow);
-router.delete('/shows/:id', controller.deleteShow);
+router.delete('/show/:id', controller.deleteShow);
 // router.get();
 
 module.exports = router;

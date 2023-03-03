@@ -32,7 +32,10 @@ export const checkFavs = async (id) => {
 }
 
 export const deleteShow = async (info) => {
-  const response = await fetch(`${BASE_URL}/show/:id`, {
+  const showid = {
+    id: info.id
+  }
+  const response = await fetch(`${BASE_URL}/show/${showid.id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
