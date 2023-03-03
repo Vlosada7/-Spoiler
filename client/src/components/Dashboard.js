@@ -3,34 +3,21 @@ import { Routes, Route } from 'react-router-dom';
 import './Dashboard.css';
 import Home from './Home';
 import Discovery from './Discovery';
-import Navbar from './Navbar';
+import Show from './Show';
+import Categories from './Categories';
+import CategorieSelected from './Categorie-selected';
 
-// const Dashboard = () => {
-//   return (
-//     <div className='dashboard'>
-//       <Discovery/>
-//       {/* <Routes>
-//         <Route
-//           path ='/home'
-//           element={<Home/>}
-//         />
-//         <Route 
-//           path='/discovery'
-//           element={<Discovery/>}
-//         />
-//       </Routes> */}
-//     </div>
-//   )
-// }
 
 const Dashboard = () => {
   return (
     <div className='dashboard'>
       <Routes>
-        
         <Route path='/home' element={<Home/>} />
         <Route path='/discovery' element={<Discovery />} />
-        {/* <Route path='/categories' element={<Categories />} />
+        <Route path='/show/:id' element={<Show />} />
+        <Route path='/categories' element={<Categories />} />
+        <Route path='/categorie/:name' element={<CategorieSelected />} />
+        {/* 
         <Route path='/surprise-me' element={<SurpriseMe />} />
         <Route path='/profile' element={<Profile />} /> */}
       </Routes>
@@ -39,3 +26,4 @@ const Dashboard = () => {
 }
 
 export default Dashboard;
+

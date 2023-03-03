@@ -1,7 +1,5 @@
 import './App.css';
 import Header from './components/Header';
-import Navbar from './components/Navbar';
-import Dashboard from './components/Dashboard';
 import Content from './components/Content';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -13,7 +11,7 @@ function App() {
       </header>
       <div>
         <Router>
-        <Content/>
+          <Content/>
         </Router>
       </div>
     </div>
