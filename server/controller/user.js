@@ -1,38 +1,5 @@
 const User = require('../models/user.js');
 
-// const create = async (req, res) => {
-//   const userInfo = {
-//     username: req.params.username,
-//     favShows: [] 
-//   }
-//   console.log(userInfo.username)
-//   if (!userInfo) {
-//     return res.status(400).send('Username não especificado');
-//   }
-//   console.log('Perfil criado');
-//   try {
-//     const user = await User.find({username : userInfo.username});
-//     if (!user) {
-//       const createUser = await User.create(userInfo);
-//       res.status(201).json(createUser);
-//     } else {
-//       res.status(409).send('O usuário já existe');
-//     }
-//   } catch (error) {
-//     res.status(400).send('Error: ' + error);
-//   }
-// }
-// const login = async (req, res) => {
-//   console.log('Login efetuado');
-// }
-
-// const profile = async (req, res) => {
-//   console.log('Perfil acessado');
-// }
-
-// const logout = (req, res) => {
-//   console.log('Fez Logout');
-// }
 
 const getFav = async (req, res) => {
   // console.log(req.params.username);

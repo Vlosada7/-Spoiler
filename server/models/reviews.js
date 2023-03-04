@@ -1,20 +1,25 @@
-const mongoose = require('.index.js');
+const mongoose = require('./index.js');
 const {Schema} = mongoose;
 
 const ReviewSchema = new Schema({
   id: {
     type: Number, 
-    required: true
+    required: true, 
+    unique: true
   },
-  content: {
-    type: String, 
-    required: true
-  },
-  author: {
-    type: String, 
-    required: true
-  }
-
+  reviews: [
+    {
+      content: {
+        type: String,
+        required: true
+      },
+      author: {
+        type: String, 
+        required: true
+      }, 
+      _id: false
+    }
+  ]
 })
 
 const Reviews = mongoose.model('Reviews', ReviewSchema)

@@ -15,7 +15,7 @@ const API_URL_FIND = 'https://api.themoviedb.org/3/tv/{tv_id}?api_key=5237caacb7
 
 const API_CLERK = 'pk_test_Y2hvaWNlLXJvdWdoeS05NC5jbGVyay5hY2NvdW50cy5kZXYk';
 
-
+//User:
 export const getFavs = async (fullUser) => {
   const userInfo = {
     username: fullUser.username
@@ -87,7 +87,6 @@ export const saveShow = async (info) => {
   return response;
 }
 
-
 export const discover = async () => {
   return fetch(API_URL_DISCOVERY, {
     method: 'GET', 
@@ -122,4 +121,37 @@ export const findByCat = async (catName) => {
   })
   .then((res) => res.json())
   .catch((err) => console.log(err));
+}
+
+//Revies: 
+
+export const getReviews= async (reviewId) => {
+  const reviewInfo = {
+    id: reviewId
+  }
+  const all = await fetch(BASE_URL + `/tv/${reviewInfo.id}/reviews`);
+  // const allReviews = await all.json();
+  
+  // const showList = await Promise.all(allReviews.map(async ({ id }) => {
+  //   const showInfo = await getFavId(id);
+  //   return showInfo;
+  // }));
+  
+  return all;
+}
+
+export const postReview = async (review) => {
+  console.log(review);
+  const response = await fetch(BASE_URL + `/tv/${review.id}/reviews`, {
+    method: "POST", 
+    headers: {
+      "Content-Type":"application/json",
+    },
+    body: JSON.stringify(review),
+  })
+  .then((response) => response.json())
+  .catch((error) => {
+    console.error('Error: ', error);
+  })
+  return response;
 }
