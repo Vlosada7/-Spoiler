@@ -5,9 +5,11 @@ import { discover } from "../../ApiService";
 import { getShow } from "../../ApiService";
 import { Link } from "react-router-dom";
 import Show from "../Show/Show";
+import { useUser } from '@clerk/clerk-react'
 
 const Discovery = () => {
 	const [shows, setShows] = useState([]);
+	const { user } = useUser();
 	useEffect(() => {
 		const getDiscovery = async () => {
 			try {
@@ -23,7 +25,7 @@ const Discovery = () => {
 	function handleClick(showId) {
 		// Navegue para a página do filme
 		// getShow(showId);
-		console.log(showId);
+		// console.log(showId);
 		// history.push(`/filme/${movieId}`);
 	}
 

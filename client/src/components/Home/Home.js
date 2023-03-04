@@ -1,18 +1,28 @@
 import React from "react";
 import "./Home.css";
 import { useEffect, useState } from "react";
-import { getFavs } from "../../ApiService";
+import { createUser, getFavs } from "../../ApiService";
 import { isEmpty } from "lodash";
-import { getFavId } from "../../ApiService";
 import { Link } from "react-router-dom";
+import { useUser } from '@clerk/clerk-react'
+
 
 const Home = () => {
 	const [showList, setShowList] = useState([]);
+	const [userLog, setUser] = useState([]);
+	const { user } = useUser();
+	const fullUser = {
+		username: user.username,
+	}
+	// setUser(fullUser);
+
+	// console.log(fullUser);
+	
 
 	useEffect(() => {
 		const favShows = async () => {
 			try {
-				const response = await getFavs();
+				const response = await getFavs(fullUser);
 				setShowList(response);
 			} catch (error) {
 				console.error("Erro ao fazer requisição: ", error);
@@ -25,6 +35,8 @@ const Home = () => {
 		// Navegue para a página do filme
 		// history.push(`/filme/${movieId}`);
 	}
+
+
 
 	return (
 		<div>

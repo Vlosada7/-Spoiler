@@ -5,50 +5,69 @@ import "./Show.css";
 import Checkbox from "../Checkbox/Checkbox";
 import moment from "moment";
 import { saveShow } from "../../ApiService";
+import { useUser } from '@clerk/clerk-react';
+import { Link } from "react-router-dom";
 
 const Show = () => {
 	const [show, setShow] = useState({});
 	const { id } = useParams();
 	const [isChecked, setIsChecked] = useState(false);
+	const { user } = useUser();
 
 	function handleCheckboxClick() {
 		setIsChecked(!isChecked);
-		const date = moment(Date.now());
-		const formattedDate = date.format("DD/MM/YYYY HH:mm");
+		// const date = moment(Date.now());
+		// const formattedDate = date.format("DD/MM/YYYY HH:mm");
 		const info = {
-			id: show.id,
-			addedAt: formattedDate,
+			username: user.username.toLowerCase(),
+			id: show.id
+			// addedAt: formattedDate,
 		};
 		saveShow(info);
 	}
+	
+	
 
+
+	// useEffect(() => {
+	// 	const check = async () => {
+	// 		try {
+	// 			const response = await getFavs(user);
+	// 			const isIncluded = response.find((show) => show.id === id);
+	// 			if (isIncluded) {
+	// 				setIsChecked(true);
+	// 			}
+	// 		} catch (error) {
+	// 			console.error("Erro: ", error);
+	// 		}
+	// 	};
+	// 	check();
+	// });
+
+	// useEffect(() => {
+	// 	getShow(id).then((res) => {
+	// 		setShow(res);
+	// 	});
+	// });
 	useEffect(() => {
-		const check = async () => {
+		const showCard = async () => {
 			try {
-				const response = await getFavs();
-				const isIncluded = response.find((show) => show.id === id);
-				if (isIncluded) {
-					setIsChecked(true);
-				}
+				const response = await getShow(id);
+				setShow(response);
 			} catch (error) {
-				console.error("Erro: ", error);
+				console.error(error);
 			}
 		};
-		check();
-	});
-
-	useEffect(() => {
-		getShow(id).then((res) => {
-			setShow(res);
-		});
-	});
+		showCard();
+	}, []);
+	
 
 	function handleClick(showid) {
-		console.log(showid);
 		const info = {
+			username: user.username,
 			id: show.id,
 		};
-		console.log(info);
+		// console.log(info);
 		deleteShow(info);
 	}
 
@@ -80,7 +99,9 @@ const Show = () => {
 			</div>
 			<div>
 				<br></br>
-				<button>Reviews:</button>
+				<Link to={`/tv/${id}/reviews`}>
+					<button>Reviews:</button>
+				</Link>
 			</div>
 		</div>
 	);

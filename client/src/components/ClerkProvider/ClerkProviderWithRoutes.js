@@ -14,6 +14,7 @@ import {
 import './ClerkProviderWithRoutes.css'
 import Content from "../Content/Content";
 import Header from "../Header/Header";
+import PublicPage from "../PublicPage/PublicPage";
 
 const clerkPubKey = "pk_test_Y2hvaWNlLXJvdWdoeS05NC5jbGVyay5hY2NvdW50cy5kZXYk";
 

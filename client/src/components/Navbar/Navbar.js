@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'
+import { SignOutButton } from '@clerk/clerk-react';
+import { useUser } from '@clerk/clerk-react'
 
 const Navbar = () => {
+
+
   return (
     <div className='navbar'>
       <ul className='menu'>
         <li>
-          <Link to='/home'>HOME</Link>
+        <Link to={`/home`}>HOME</Link>
         </li>
         <li>
           <Link to='/discovery'>DISCOVERY</Link>
@@ -20,6 +24,9 @@ const Navbar = () => {
         </li>
         <li>
           <Link to='/profile'>PROFILE</Link>
+        </li>
+        <li>
+          <SignOutButton/>
         </li>
       </ul>
     </div>
