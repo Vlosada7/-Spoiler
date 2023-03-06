@@ -130,18 +130,12 @@ export const getReviews= async (reviewId) => {
     id: reviewId
   }
   const all = await fetch(BASE_URL + `/tv/${reviewInfo.id}/reviews`);
-  // const allReviews = await all.json();
   
-  // const showList = await Promise.all(allReviews.map(async ({ id }) => {
-  //   const showInfo = await getFavId(id);
-  //   return showInfo;
-  // }));
-  
-  return all;
+  return all.json();
 }
 
 export const postReview = async (review) => {
-  console.log(review);
+  // console.log(review);
   const response = await fetch(BASE_URL + `/tv/${review.id}/reviews`, {
     method: "POST", 
     headers: {

@@ -12,7 +12,7 @@ const Reviews = () => {
   const { user } = useUser();
   // console.log(id);
   // console.log(user.username)
-  const [reviews, setReviews] = useState([]);
+  const [review, setReview] = useState({});
   const [show, setShow] = useState({});
   const [newReview, setNewReview] = useState({
     id: id,
@@ -29,7 +29,7 @@ const Reviews = () => {
 
   function handleSubmit(event) {
     // event.preventDefault();
-    console.log(event);
+    // console.log(event);
     const createdReview = {
       id: event.id,
       review: {
@@ -39,7 +39,7 @@ const Reviews = () => {
     }
     postReview(createdReview)
     .then((savedReview) => {
-      setReviews([...reviews, savedReview])
+      setReview([...review, savedReview])
     })
     setNewReview({
       id: id,
@@ -74,7 +74,11 @@ const Reviews = () => {
     const showReviews = async () => {
       try {
         const response = await getReviews(id);
-        setReviews(response.reviews);
+        // const reviewContents = response.reviews.map(review => review.review.content);
+        // console.log(reviewContents)
+        
+        setReview(response[0].reviews);
+        console.log(response[0].reviews);
       } catch (error) {
         console.error('Erro: ', error)
       }
@@ -85,7 +89,7 @@ const Reviews = () => {
 
   return (
     <div className='principal'>
-      {isEmpty(reviews) ? (
+      {isEmpty(review) ? (
       <div className='reviews'>
         <div 
           className='reviews-list'
@@ -121,16 +125,38 @@ const Reviews = () => {
       </div>
       ) : (
         <div className='reviews'>
-          {reviews.map((review) => (
+          {review.map((review) => (
+            <>
             <div
               className='single-review'
               key={review.id}
             >
-              <p>{review.id}</p>
-              <p>{review.review.content}</p>
-              <p>{review.review.author}</p>
+              <p>{review.content}</p>
+              <p>{review.author}</p>
             </div>
+            
+            </>
           ))}
+          <div class="reviews-input">
+            <input 
+                className='input-post' 
+                type="text" 
+                placeholder="Review the show..."
+                name='content'
+                value={newReview.review.content}
+                onChange={handleChange}
+                required
+                // readOnly={!user}
+              />
+              <button 
+                type="submit" 
+                className="btn btn-primary"
+                onClick={handleCreateButtonClick}
+                // disabled={!user}
+              >
+                Send
+              </button>
+            </div>
         </div>
       )}
     </div>
