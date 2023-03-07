@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getEp } from '../../ApiService';
 import { Link } from 'react-router-dom';
 import "./Episode.css"
+import {FiArrowLeftCircle} from 'react-icons/fi'
 
 const Episodes = () => {
   const { id, seasonNumber, epNumber} = useParams();
@@ -25,6 +26,13 @@ const Episodes = () => {
 
   return (
     <div className='info'>
+      <div>
+      <Link to={`/show/${id}/seasons/${seasonNumber}`}>
+          <button className="btn-back">
+            <FiArrowLeftCircle size={40} color="rgba(255, 255, 255, 1)"/>
+          </button>
+        </Link>
+      </div>
       <div className='titulo-imagem'>
         <img
           className='img-in'
@@ -37,9 +45,7 @@ const Episodes = () => {
         <h3>Episode overview:</h3>
         <p>{episode.overview}</p>
         <p>Episode average: {episode.vote_average}</p>
-        <Link to={`/show/${id}/seasons/${seasonNumber}`}>
-          <button>Back</button>
-        </Link>
+        
       </div>
 
     </div>

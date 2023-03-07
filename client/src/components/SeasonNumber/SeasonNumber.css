@@ -1,16 +1,17 @@
-.season-info {
+.season-info-numbered {
   display: flex;
   flex-direction: row;
   margin-left: 10vh;
+  width: 100%;
 }
 
-.button-image {
+.button-image-numbered {
   display:flex;
   flex-direction: column;
   width: 30vh;
 }
 
-.img-in {
+.img-in-numbered {
   overflow: hidden;
   height: 30vh;
   width: 30vh;
@@ -18,23 +19,30 @@
   box-shadow: 10px 5px 5px black;
 }
 
-.name-seasons {
+.name-seasons-numbered {
   margin-left: 30vh;
   text-align: center;
 }
 
-.season {
+.season-numbered {
   color: #fff;
   border-bottom: 5px solid #ca0202;
   transition: transform 0.5s;
   margin: 30px;
   border-radius: 10px;
+  display: inline-block;
+  width: 5vh;
 } 
 
-.season:hover{
+.season-numbered:hover{
   background-color: #e5b4fa;
   box-shadow: 0px 0px 20px #e5b4fa;
   transform: translate(0px, -5px);
   transition: transform 0.5s;
   color: black;
+}
+
+.btn-back{
+  background-color: transparent;
+  border: transparent;
 }

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   margin-left: 10vh;
+  width: 100%;
 }
 
 .button-image {
@@ -19,6 +20,8 @@
   transition: transform 0.5s;
   margin: 30px;
   border-radius: 10px;
+  display: inline-block;
+  width: 5vh;
 } 
 
 .season:hover{
@@ -35,5 +38,10 @@
   width: 30vh;
   border-radius: 0.5rem;
   box-shadow: 10px 5px 5px black;
+}
+
+.btn-back{
+  background-color: transparent;
+  border: transparent;
 }
 

@@ -60,7 +60,6 @@ const Show = () => {
 			</div>
 			<div className="perguntas">
 				<div className="check">
-					<p>Watched?</p> 
 					<Checkbox
 						id="myCheckbox"
 						onClick={handleCheckboxClick}

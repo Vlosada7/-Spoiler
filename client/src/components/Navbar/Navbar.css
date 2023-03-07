@@ -4,12 +4,12 @@
   display: flex;
   max-height: 100%;
   background-color: #282c35;
-  border: 1px solid black;
-  width: 15%;
+  border-right: 2px solid black;
+  width: 25vh;
   justify-content: center;
   color: white;
   font-size: large;
-  font-family: 'Miracle Fairway Personal Use', sans-serif;                                           
+  font-family: Arial;                   
 }
 .menu {
   list-style: none;
@@ -18,6 +18,7 @@
 .menu li {
   margin-top: 70px;
   color: white;
+  margin-right: 5vh;
 }
 
 a{

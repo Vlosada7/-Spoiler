@@ -4,6 +4,7 @@ import { getShow } from "../../ApiService";
 import { getEp } from "../../ApiService";
 import { Link } from "react-router-dom";
 import "./SeasonNumber.css"
+import {FiArrowLeftCircle} from 'react-icons/fi'
 
 const SeasonNumber = () => {
   const { id, seasonId } = useParams();
@@ -37,24 +38,26 @@ const SeasonNumber = () => {
   })
 
   return (
-    <div className="season-info">
-        <div className="button-image">
+    <div className="season-info-numbered">
+        <div className="button-image-numbered">
           <Link to={`/show/${id}/seasons`}>
-            <button>Back</button>
+            <button className="btn-back">
+              <FiArrowLeftCircle size={40} color="rgba(255, 255, 255, 1)"/>
+            </button>
           </Link>
             <img
-              className="img-in"
+              className="img-in-numbered"
               src={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
               alt={`${seasonId} season poster`}
             />
             <p>{season.overview}</p>
         </div>
-        <div className="name-seasons">
+        <div className="name-seasons-numbered">
           <h3>{show.name}</h3>
           <h4>Season {seasonId}</h4>
           <h5>Episodes:</h5>
           {episodes.map((ep) => (
-            <div className="season">
+            <div className="season-numbered">
               <Link to={`/tv/${id}/season/${seasonId}/episode/${ep.episode_number}`}>
                 <p>{ep.episode_number}</p>
               </Link>

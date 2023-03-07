@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getShow } from "../../ApiService";
 import './Season.css'
 import { Link } from "react-router-dom";
+import {FiArrowLeftCircle} from 'react-icons/fi'
 
 const Season = () => {
   const { id } = useParams();
@@ -28,7 +29,9 @@ const Season = () => {
     <div className="season-info">
       <div className="button-image">
         <Link to={`/show/${id}`}>
-          <button>Back</button>
+          <button className="btn-back">
+            <FiArrowLeftCircle size={40} color="rgba(255, 255, 255, 1)"/>
+          </button>
         </Link>      
         <img 
           className="img-in"
