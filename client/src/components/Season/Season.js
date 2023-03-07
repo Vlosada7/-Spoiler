@@ -7,13 +7,15 @@ import { Link } from "react-router-dom";
 const Season = () => {
   const { id } = useParams();
   const [seasons, setSeasons] = useState([]);
+  const [show, setShow] = useState({})
+
 
   useEffect(() => {
     const getId = async () => {
       try {
         const response = await getShow(id)
+        setShow(response)
         setSeasons(response.seasons)
-        console.log(response.seasons)
       } catch (error) {
         console.error("erro:", error);        
       }
@@ -26,17 +28,25 @@ const Season = () => {
   }
   return(
     <div className="seasons-list">
+      <Link to={`/show/${id}`}>
+        <button>Back</button>
+      </Link>      
+      <div>
+        <h3>{show.name} Seasons:</h3>
+        
+      </div>
       {seasons.map((season) => (
         <div
           className="season"
           key={season.season_number}
           onClick={() => handleClick(season.id)}
         >
-          <Link to={`/show/${id}/seasons/${season.id}`}>
-          <p>{season.season_number + 1}</p>
+          <Link to={`/show/${id}/seasons/${season.season_number}`}>
+          <p>{season.season_number}</p>
           </Link>
         </div>
       ))}
+      
     </div>
   )
 }

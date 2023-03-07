@@ -126,7 +126,17 @@ export const findByCat = async (catName) => {
 export const getFindShow = async (query) => {
   return fetch(`https://api.themoviedb.org/3/search/tv?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&page=1&query=${query}&include_adult=false`, {
     method: 'GET', 
-    headers: {'Content-Type':'application.json'},
+    headers: {'Content-Type':'application/json'},
+  })
+  .then((res) => res.json())
+  .catch((err) => console.log(err));
+}
+
+export const getEp = async (id, seasonNumber) => {
+  return fetch(`
+  https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US`, {
+    method: 'GET', 
+    headers: {'Content-Type':'application/json'},
   })
   .then((res) => res.json())
   .catch((err) => console.log(err));

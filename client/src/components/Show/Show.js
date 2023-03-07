@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getFavs, getShow, deleteShow } from "../../ApiService";
-import { Route, useParams } from "react-router-dom";
+import { getShow, deleteShow } from "../../ApiService";
+import { useParams } from "react-router-dom";
 import "./Show.css";
 import Checkbox from "../Checkbox/Checkbox";
 import { saveShow } from "../../ApiService";
@@ -32,7 +32,7 @@ const Show = () => {
 			}
 		};
 		showCard();
-	}, []);
+	}, [id]);
 	
 
 	function handleClick(showid) {
@@ -69,7 +69,6 @@ const Show = () => {
 				<Link to={`/show/${show.id}/seasons`}>
 				<button>Seasons: {show.number_of_seasons}</button>
 				</Link>
-				<button>Episodeos: {show.number_of_episodes}</button>
 			</div>
 			<div>
 				<br></br>

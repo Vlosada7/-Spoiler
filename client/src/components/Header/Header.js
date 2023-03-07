@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import { getFindShow } from '../../ApiService';
+import SearchResults from '../SearchResult/SearchResults';
 
 const Header = () => {
   const [newSearch, setNewSearch] = useState({
@@ -66,6 +67,7 @@ const Header = () => {
       {showResults && (
         <div className='search-results'>
           <button onClick={() => setShowResults(false)}>X</button>
+          
           <ul>
             {show.map((result) => (
               <div
@@ -73,7 +75,7 @@ const Header = () => {
                 className='list-result'
                 onClick={()=> handleClick(result.id)}
               >
-                <li>
+                  <li>
                   {result.name}
                   </li>
               </div>

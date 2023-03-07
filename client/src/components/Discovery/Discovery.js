@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Discovery.css";
 import { discover } from "../../ApiService";
-import { getShow } from "../../ApiService";
 import { Link } from "react-router-dom";
-import { useUser } from '@clerk/clerk-react'
+
 
 const Discovery = () => {
 	const [shows, setShows] = useState([]);
-	const { user } = useUser();
 	useEffect(() => {
 		const getDiscovery = async () => {
 			try {

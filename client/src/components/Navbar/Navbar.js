@@ -22,9 +22,9 @@ const Navbar = () => {
         <li>
           <Link to='/surprise-me'>SURPRISE-ME</Link>
         </li>
-        {/* <li>
-          <Link to='/profile'>PROFILE</Link>
-        </li> */}
+        <li>
+          <Link to='/search'>SEARCH</Link>
+        </li>
         <li>
           <SignOutButton/>
         </li>
