@@ -2,8 +2,6 @@
   display: inline-block;
   margin: 10px;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   cursor: pointer;
   height: 30vh;
   width: 30vh;
@@ -11,6 +9,18 @@
 }
 
 .img-out {
+  overflow: hidden;
   height: 30vh;
   width: 30vh;
+  border-radius: 0.5rem;
+  box-shadow: 10px 5px 5px black;
+}
+
+.img-out img {
+  width: 100%;
+  display: block;
+}
+.img-out img:hover {
+  transform: scale(1.1);
+  transition: 1s;
 }

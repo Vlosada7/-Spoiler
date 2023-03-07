@@ -25,7 +25,11 @@
   justify-content: space-between;
 }
 
-/* .img-inside {
-  height: 50vh;
-  width: 50vh;
-} */
+.img-inside {
+  overflow: hidden;
+  height: 30vh;
+  width: 30vh;
+  border-radius: 0.5rem;
+  box-shadow: 10px 5px 5px black;
+}
+

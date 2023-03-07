@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getEp } from '../../ApiService';
 import { Link } from 'react-router-dom';
+import "./Episode.css"
 
 const Episodes = () => {
   const { id, seasonNumber, epNumber} = useParams();
@@ -26,7 +27,7 @@ const Episodes = () => {
     <div className='info'>
       <div className='titulo-imagem'>
         <img
-          className='img-inside'
+          className='img-in'
           src={`https://image.tmdb.org/t/p/w500${episode.still_path}`}
           alt={`${episode.name}`}
           />

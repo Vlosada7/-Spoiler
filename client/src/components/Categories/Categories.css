@@ -1,10 +1,15 @@
 .categories-list {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  margin-left: 15vh;
+  margin-right: 15vh;
+  font-size: 18px;
+  text-align: center;
+  height: 60vh;
+  align-content: center;
 }
 
-.categorie {
+/* .categorie {
   display: inline-block;
   text-align: center;
   margin: 10px;
@@ -14,4 +19,18 @@
   cursor: pointer;
   height: 10vh;
   width: 20vh;
+} */
+
+.categorie {
+  color: #fff;
+  border-bottom: 5px solid #ca0202;
+  transition: transform 0.5s;
+  margin: 30px;
+  border-radius: 10px;
+}
+.categorie:hover {
+  background-color: #e5b4fa;
+  box-shadow: 0px 0px 20px #e5b4fa;
+  transform: translate(0px, -5px);
+  transition: transform 0.5s;
 }

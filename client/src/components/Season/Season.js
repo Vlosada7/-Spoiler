@@ -31,6 +31,7 @@ const Season = () => {
           <button>Back</button>
         </Link>      
         <img 
+          className="img-in"
           src={`https://image.tmdb.org/t/p/w300${show.poster_path}`}
           alt={`${show.name} poster`}
         />

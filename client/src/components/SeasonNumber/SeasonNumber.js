@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getShow } from "../../ApiService";
 import { getEp } from "../../ApiService";
 import { Link } from "react-router-dom";
+import "./SeasonNumber.css"
 
 const SeasonNumber = () => {
   const { id, seasonId } = useParams();
@@ -42,6 +43,7 @@ const SeasonNumber = () => {
             <button>Back</button>
           </Link>
             <img
+              className="img-in"
               src={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
               alt={`${seasonId} season poster`}
             />

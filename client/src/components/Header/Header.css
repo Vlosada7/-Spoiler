@@ -9,6 +9,7 @@
   color: white;
   max-height: 20vh;
   align-items: center;
+  box-shadow: 0 0 4px rgb(250, 250, 250);
 }
 
 .logo{
