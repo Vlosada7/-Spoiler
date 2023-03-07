@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import { useEffect, useState } from "react";
-import { createUser, getFavs } from "../../ApiService";
+import { getFavs } from "../../ApiService";
 import { isEmpty } from "lodash";
 import { Link } from "react-router-dom";
 import { useUser } from '@clerk/clerk-react'
@@ -9,7 +9,6 @@ import { useUser } from '@clerk/clerk-react'
 
 const Home = () => {
 	const [showList, setShowList] = useState([]);
-	const [userLog, setUser] = useState([]);
 	const { user } = useUser();
 	const fullUser = {
 		username: user.username,
@@ -27,13 +26,6 @@ const Home = () => {
 		favShows();
 	}, []);
 
-	function handleClick(movieId) {
-		// Navegue para a página do filme
-		// history.push(`/filme/${movieId}`);
-	}
-
-
-
 	return (
 		<div>
 			{isEmpty(showList) ? (
@@ -44,7 +36,6 @@ const Home = () => {
 						<div
 							className="show"
 							key={show.id}
-							onClick={() => handleClick(show.id)}
 						>
 							<Link to={`/show/${show.id}`}>
 								<img

@@ -1,9 +1,24 @@
-.seasons-list {
+/* .seasons-list {
   display: flex;
   flex-wrap: wrap;
   margin-left: 15vh;
 }
+*/
+.season-info {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10vh;
+}
 
+.button-image {
+  display:flex;
+  flex-direction: column;
+  width: 30vh;
+}
+.name-seasons {
+  margin-left: 30vh;
+  text-align: center;
+}
 .season {
   display: inline-block;
   text-align: center;
@@ -12,6 +27,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
-  height: 10vh;
-  width: 20vh;
-}
+  height: 8vh;
+  width: 4vh;
+} 
+

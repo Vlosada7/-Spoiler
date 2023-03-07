@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { findByCat } from "../../ApiService";
 import { Link } from "react-router-dom";
 import "./Categorie-selected.css";
@@ -20,9 +20,7 @@ const CategorieSelected = () => {
 		getShowsbyCat();
 	}, []);
 
-	function handleClick(showId) {
-		// console.log(showId);
-	}
+
 
 	return (
 		<div>
@@ -36,7 +34,6 @@ const CategorieSelected = () => {
 						<div
 							className="show"
 							key={show.id}
-							onClick={() => handleClick(show.id)}
 						>
 							<Link to={`/show/${show.id}`}>
 								<img

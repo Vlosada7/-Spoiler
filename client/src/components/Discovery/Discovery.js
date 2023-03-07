@@ -18,12 +18,7 @@ const Discovery = () => {
 		getDiscovery();
 	}, []);
 
-	function handleClick(showId) {
-		// Navegue para a página do filme
-		// getShow(showId);
-		// console.log(showId);
-		// history.push(`/filme/${movieId}`);
-	}
+
 
 	return (
 		<div>
@@ -32,7 +27,6 @@ const Discovery = () => {
 					<div
 						className="show"
 						key={show.id}
-						onClick={() => handleClick(show.id)}
 					>
 						<Link to={`/show/${show.id}`}>
 							<img

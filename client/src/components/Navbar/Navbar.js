@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'
 import { SignOutButton } from '@clerk/clerk-react';
-import { useUser } from '@clerk/clerk-react'
+
 
 const Navbar = () => {
 
@@ -19,9 +19,9 @@ const Navbar = () => {
         <li>
           <Link to='/categories'>CATEGORIES</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to='/surprise-me'>SURPRISE-ME</Link>
-        </li>
+        </li> */}
         <li>
           <Link to='/search'>SEARCH</Link>
         </li>

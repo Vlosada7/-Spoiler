@@ -46,35 +46,39 @@ const Show = () => {
 	return (
 		<div className="info">
 			<div className="titulo-imagem">
-				<img
-					className="img-inside"
-					src={`https://image.tmdb.org/t/p/w300${show.poster_path}`}
-					alt={`${show.name} poster`}
-				/>
-				<div className="nome-desc">
-					<p>Ja assistiu?</p>
+				<div>
+					<img
+						className="img-inside"
+						src={`https://image.tmdb.org/t/p/w300${show.poster_path}`}
+						alt={`${show.name} poster`}
+					/>
+				</div>
+					<div className="name-overview">
+						<h3>{show.name}</h3>
+						<p>{show.overview}</p>
+					</div>
+			</div>
+			<div className="perguntas">
+				<div className="check">
+					<p>Watched?</p> 
 					<Checkbox
 						id="myCheckbox"
 						onClick={handleCheckboxClick}
 						checked={isChecked ? true : false}
 					/>
-					<br></br>
-					<button onClick={() => handleClick(show.id)}>DELETE</button>
-					<h3>{show.name}</h3>
-					<p>{show.overview}</p>
+					
 				</div>
-			</div>
-			<div>
-				<br></br>
-				<Link to={`/show/${show.id}/seasons`}>
-				<button>Seasons: {show.number_of_seasons}</button>
-				</Link>
-			</div>
-			<div>
-				<br></br>
-				<Link to={`/tv/${id}/reviews`}>
-					<button>Reviews:</button>
-				</Link>
+				<div className="seasons-review">
+						<Link to={`/show/${show.id}/seasons`}>
+							<button>Seasons: {show.number_of_seasons}</button>
+						</Link>
+							<br></br>
+						<Link to={`/tv/${id}/reviews`}>
+							<button>Reviews of the show</button>
+						</Link>
+						<br></br>
+						<button onClick={() => handleClick(show.id)}>DELETE</button>
+				</div>
 			</div>
 		</div>
 	);

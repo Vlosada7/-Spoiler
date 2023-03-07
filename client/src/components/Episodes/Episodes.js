@@ -30,10 +30,10 @@ const Episodes = () => {
           src={`https://image.tmdb.org/t/p/w500${episode.still_path}`}
           alt={`${episode.name}`}
           />
-          <h3>{episode.name}</h3>
+          <h2>{episode.name}</h2>
       </div>
       <div>
-        <p>Episode overview:</p>
+        <h3>Episode overview:</h3>
         <p>{episode.overview}</p>
         <p>Episode average: {episode.vote_average}</p>
         <Link to={`/show/${id}/seasons/${seasonNumber}`}>

@@ -3,7 +3,7 @@
 .header {
   display: flex;
   background-color: black;
-  justify-content: space-between;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   width: 100%;
   color: white;
@@ -11,7 +11,8 @@
   align-items: center;
 }
 
-.list-result{
-  cursor: pointer;
+.logo{
+  width: 30vh;
+  height: 100%;
 }
 

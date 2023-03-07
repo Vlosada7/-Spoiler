@@ -9,8 +9,6 @@ const SeasonNumber = () => {
   const [show, setShow] = useState([]);
   const [season, setSeason] = useState([]);
   const [episodes, setEpisodes] = useState([]);
-  console.log(id)
-  console.log(seasonId)
 
   useEffect(() => {
     const getId = async () => {
@@ -38,20 +36,22 @@ const SeasonNumber = () => {
   })
 
   return (
-    <div>
-      <div>
-      <Link to={`/show/${id}/seasons`}>
-        <button>Back</button>
-      </Link>
-        <h3>{show.name}</h3>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
-            alt={`${seasonId} season poster`}
-          />
+    <div className="season-info">
+        <div className="button-image">
+          <Link to={`/show/${id}/seasons`}>
+            <button>Back</button>
+          </Link>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
+              alt={`${seasonId} season poster`}
+            />
         </div>
-        <div>
+        <div className="name-seasons">
+          <h3>{show.name}</h3>
+          <h4>Season {seasonId}</h4>
+          <h5>Episodes:</h5>
           {episodes.map((ep) => (
-            <div>
+            <div className="season">
               <Link to={`/tv/${id}/season/${seasonId}/episode/${ep.episode_number}`}>
                 <p>{ep.episode_number}</p>
               </Link>
@@ -59,7 +59,6 @@ const SeasonNumber = () => {
           ))}
         </div>
         <div>
-          <h3>Season {seasonId}:</h3>
           <p>{season.overview}</p>
         </div>
     </div>

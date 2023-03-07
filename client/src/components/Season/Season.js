@@ -16,6 +16,7 @@ const Season = () => {
         const response = await getShow(id)
         setShow(response)
         setSeasons(response.seasons)
+        console.log(response)
       } catch (error) {
         console.error("erro:", error);        
       }
@@ -23,30 +24,31 @@ const Season = () => {
     getId();
   })
 
-  function handleClick(id) {
-    console.log(id);
-  }
   return(
-    <div className="seasons-list">
-      <Link to={`/show/${id}`}>
-        <button>Back</button>
-      </Link>      
-      <div>
-        <h3>{show.name} Seasons:</h3>
-        
+    <div className="season-info">
+      <div className="button-image">
+        <Link to={`/show/${id}`}>
+          <button>Back</button>
+        </Link>      
+        <img 
+          src={`https://image.tmdb.org/t/p/w300${show.poster_path}`}
+          alt={`${show.name} poster`}
+        />
       </div>
-      {seasons.map((season) => (
-        <div
-          className="season"
-          key={season.season_number}
-          onClick={() => handleClick(season.id)}
-        >
-          <Link to={`/show/${id}/seasons/${season.season_number}`}>
-          <p>{season.season_number}</p>
-          </Link>
+      <div className="name-seasons">
+        <h3>{show.name}</h3> 
+        <h4>Seasons:</h4>
+        {seasons.map((season) => (
+          <div
+            className="season"
+            key={season.season_number}
+          >
+            <Link to={`/show/${id}/seasons/${season.season_number}`}>
+            <p>{season.season_number}</p>
+            </Link>
         </div>
       ))}
-      
+      </div>
     </div>
   )
 }

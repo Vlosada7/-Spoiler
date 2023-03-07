@@ -1,8 +1,7 @@
-import { SignIn, SignInButton } from "@clerk/clerk-react";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { SignInButton } from "@clerk/clerk-react";
+import React from "react";
 import './PublicPage.css'
-import { useAuth, useUser } from '@clerk/clerk-react';
+
 
 const PublicPage = () => {
 

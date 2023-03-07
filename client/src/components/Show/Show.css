@@ -5,21 +5,27 @@
   padding: 10px;
   height: 95%;
   width: 90%;
-};
+}
 
 .titulo-imagem {
-  display: inline-block;
-};
-
-.nome-desc {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-};
+}
 
-.img-inside {
+.name-overview {
+  margin-left: 10vh;
+
+}
+
+.check {
+  display: flex;
+}
+
+.perguntas {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .img-inside {
   height: 50vh;
   width: 50vh;
-}
+} */
