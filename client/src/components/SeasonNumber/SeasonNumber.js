@@ -47,6 +47,7 @@ const SeasonNumber = () => {
               src={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
               alt={`${seasonId} season poster`}
             />
+            <p>{season.overview}</p>
         </div>
         <div className="name-seasons">
           <h3>{show.name}</h3>
@@ -61,7 +62,7 @@ const SeasonNumber = () => {
           ))}
         </div>
         <div>
-          <p>{season.overview}</p>
+          
         </div>
     </div>
   )

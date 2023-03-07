@@ -1,9 +1,26 @@
+.season-info {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10vh;
+}
+
+.button-image {
+  display:flex;
+  flex-direction: column;
+  width: 30vh;
+}
+
 .img-in {
   overflow: hidden;
   height: 30vh;
   width: 30vh;
   border-radius: 0.5rem;
   box-shadow: 10px 5px 5px black;
+}
+
+.name-seasons {
+  margin-left: 30vh;
+  text-align: center;
 }
 
 .season {

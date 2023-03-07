@@ -70,14 +70,14 @@ const Show = () => {
 				</div>
 				<div className="seasons-review">
 						<Link to={`/show/${show.id}/seasons`}>
-							<button>Seasons: {show.number_of_seasons}</button>
+							<button className="btn btn-1">Seasons: {show.number_of_seasons}</button>
 						</Link>
 							<br></br>
 						<Link to={`/tv/${id}/reviews`}>
-							<button>Reviews of the show</button>
+							<button className="btn btn-2">Reviews of the show</button>
 						</Link>
 						<br></br>
-						<button onClick={() => handleClick(show.id)}>DELETE</button>
+						<button className="btn btn-3" onClick={() => handleClick(show.id)}>DELETE</button>
 				</div>
 			</div>
 		</div>

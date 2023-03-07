@@ -1,9 +1,3 @@
-/* .seasons-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 15vh;
-}
-*/
 .season-info {
   display: flex;
   flex-direction: row;
