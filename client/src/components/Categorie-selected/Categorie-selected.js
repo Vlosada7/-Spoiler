@@ -21,10 +21,7 @@ const CategorieSelected = () => {
 	}, []);
 
 	function handleClick(showId) {
-		// Navegue para a página do filme
-		// getShow(showId);
-		console.log(showId);
-		// history.push(`/filme/${movieId}`);
+		// console.log(showId);
 	}
 
 	return (

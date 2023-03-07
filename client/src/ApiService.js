@@ -7,13 +7,13 @@ const BASE_URL = 'http://localhost:4000';
 
 const API_URL_DISCOVERY = 'https://api.themoviedb.org/3/tv/popular?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&page=1';
 
-const API_URL_SEARCH = 'https://api.themoviedb.org/3/search/tv?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&page=1&query=(Game%20Of%20Thrones)&include_adult=false'
+// const API_URL_SEARCH = 'https://api.themoviedb.org/3/search/tv?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&page=1&query=(Game%20Of%20Thrones)&include_adult=false'
 
 const API_URL_CATEGORIES = 'https://api.themoviedb.org/3/genre/tv/list?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US';
 
-const API_URL_FIND = 'https://api.themoviedb.org/3/tv/{tv_id}?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US';
+// const API_URL_FIND = 'https://api.themoviedb.org/3/tv/{tv_id}?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US';
 
-const API_CLERK = 'pk_test_Y2hvaWNlLXJvdWdoeS05NC5jbGVyay5hY2NvdW50cy5kZXYk';
+// const API_CLERK = 'pk_test_Y2hvaWNlLXJvdWdoeS05NC5jbGVyay5hY2NvdW50cy5kZXYk';
 
 //User:
 export const getFavs = async (fullUser) => {
@@ -118,6 +118,15 @@ export const findByCat = async (catName) => {
   return fetch(`https://api.themoviedb.org/3/search/tv?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&page=1&query=${catName}&include_adult=false`, {
     method: 'GET', 
     headers: {'Content-Type': 'application/json'},
+  })
+  .then((res) => res.json())
+  .catch((err) => console.log(err));
+}
+
+export const getFindShow = async (query) => {
+  return fetch(`https://api.themoviedb.org/3/search/tv?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&page=1&query=${query}&include_adult=false`, {
+    method: 'GET', 
+    headers: {'Content-Type':'application.json'},
   })
   .then((res) => res.json())
   .catch((err) => console.log(err));

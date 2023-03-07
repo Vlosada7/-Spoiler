@@ -3,7 +3,6 @@ import { getFavs, getShow, deleteShow } from "../../ApiService";
 import { Route, useParams } from "react-router-dom";
 import "./Show.css";
 import Checkbox from "../Checkbox/Checkbox";
-import moment from "moment";
 import { saveShow } from "../../ApiService";
 import { useUser } from '@clerk/clerk-react';
 import { Link } from "react-router-dom";
@@ -16,39 +15,13 @@ const Show = () => {
 
 	function handleCheckboxClick() {
 		setIsChecked(!isChecked);
-		// const date = moment(Date.now());
-		// const formattedDate = date.format("DD/MM/YYYY HH:mm");
 		const info = {
 			username: user.username.toLowerCase(),
 			id: show.id
-			// addedAt: formattedDate,
 		};
 		saveShow(info);
 	}
-	
-	
 
-
-	// useEffect(() => {
-	// 	const check = async () => {
-	// 		try {
-	// 			const response = await getFavs(user);
-	// 			const isIncluded = response.find((show) => show.id === id);
-	// 			if (isIncluded) {
-	// 				setIsChecked(true);
-	// 			}
-	// 		} catch (error) {
-	// 			console.error("Erro: ", error);
-	// 		}
-	// 	};
-	// 	check();
-	// });
-
-	// useEffect(() => {
-	// 	getShow(id).then((res) => {
-	// 		setShow(res);
-	// 	});
-	// });
 	useEffect(() => {
 		const showCard = async () => {
 			try {
@@ -67,7 +40,6 @@ const Show = () => {
 			username: user.username,
 			id: show.id,
 		};
-		// console.log(info);
 		deleteShow(info);
 	}
 
@@ -94,7 +66,9 @@ const Show = () => {
 			</div>
 			<div>
 				<br></br>
+				<Link to={`/show/${show.id}/seasons`}>
 				<button>Seasons: {show.number_of_seasons}</button>
+				</Link>
 				<button>Episodeos: {show.number_of_episodes}</button>
 			</div>
 			<div>

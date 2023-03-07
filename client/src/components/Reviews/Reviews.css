@@ -21,6 +21,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: auto;
+  float: left;
 }
 
 .reviews-input {
@@ -38,5 +40,8 @@
 
 .single-review {
   border: 1px solid white;
-  
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 50vh;
+  margin: 5px;
+  border-radius: 10px;
 }

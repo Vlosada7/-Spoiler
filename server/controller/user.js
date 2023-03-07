@@ -17,7 +17,6 @@ const getFav = async (req, res) => {
   }
 }
 
-
 const deleteShow = async (req, res) => {
   const info = {
     username: req.body.username,
@@ -70,5 +69,3 @@ const favShow = async (req, res) => {
 }
 
 module.exports = { favShow, getFav, deleteShow };
-
-//, getFav, , deleteShow create

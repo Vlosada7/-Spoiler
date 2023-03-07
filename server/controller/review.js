@@ -5,7 +5,7 @@ const getReviews = async (req, res) => {
   console.log('pegou o review do id:', reviewId);
   try {
     const reviews = await Reviews.find({ id: reviewId });
-    res.send(reviews); // corrigido para enviar as reviews encontradas
+    res.send(reviews);
   } catch (error) {
     console.log(error);
     res.status(500).send('Erro ao buscar reviews');
@@ -13,8 +13,6 @@ const getReviews = async (req, res) => {
 };
 
 const postReview = async (req, res) => {
-  // const reviewId = req.params.id;
-  // console.log('Postou um novo review no id:' + reviewId);
   const newReview = {
     id: req.body.id,
     reviews: {
@@ -24,9 +22,9 @@ const postReview = async (req, res) => {
   };
 
   try {
-    const post = await Reviews.findOne({ id: newReview.id }); // corrigido para usar findOne em vez de find
+    const post = await Reviews.findOne({ id: newReview.id });
     if (!post) {
-      const newPost = await Reviews.create({ id: newReview.id, reviews: [] }); // corrigido para criar um novo objeto com um array vazio de reviews
+      const newPost = await Reviews.create({ id: newReview.id, reviews: [] });
       await Reviews.updateOne(
         { id: newReview.id },
         { $push: { reviews: { content: newReview.reviews.content, author: newReview.reviews.author } } }

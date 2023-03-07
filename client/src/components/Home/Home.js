@@ -14,10 +14,6 @@ const Home = () => {
 	const fullUser = {
 		username: user.username,
 	}
-	// setUser(fullUser);
-
-	// console.log(fullUser);
-	
 
 	useEffect(() => {
 		const favShows = async () => {

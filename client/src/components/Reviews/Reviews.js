@@ -10,8 +10,6 @@ import { postReview } from '../../ApiService';
 const Reviews = () => {
   const { id } = useParams();
   const { user } = useUser();
-  // console.log(id);
-  // console.log(user.username)
   const [review, setReview] = useState({});
   const [show, setShow] = useState({});
   const [newReview, setNewReview] = useState({
@@ -22,14 +20,24 @@ const Reviews = () => {
     }
   });
 
+  useEffect(() => {
+    const showReviews = async () => {
+      try {
+        const response = await getReviews(id);
+        setReview(response[0].reviews);
+      } catch (error) {
+        console.error('Erro: ', error)
+      }
+    };
+    showReviews();
+  }, [id])
+
   function handleChange(event) {
     const {name, value} = event.target;
     setNewReview({...newReview, review: {...newReview.review, [name] : value}});
   }
 
   function handleSubmit(event) {
-    // event.preventDefault();
-    // console.log(event);
     const createdReview = {
       id: event.id,
       review: {
@@ -39,7 +47,7 @@ const Reviews = () => {
     }
     postReview(createdReview)
     .then((savedReview) => {
-      setReview([...review, savedReview])
+      setReview([...review, savedReview]); 
     })
     setNewReview({
       id: id,
@@ -70,40 +78,63 @@ const Reviews = () => {
     showInfos();
   })
 
-  useEffect(() => {
-    const showReviews = async () => {
-      try {
-        const response = await getReviews(id);
-        // const reviewContents = response.reviews.map(review => review.review.content);
-        // console.log(reviewContents)
-        
-        setReview(response[0].reviews);
-        console.log(response[0].reviews);
-      } catch (error) {
-        console.error('Erro: ', error)
-      }
-    };
-    showReviews();
-  }, [])
-
-
   return (
     <div className='principal'>
       {isEmpty(review) ? (
-      <div className='reviews'>
-        <div 
-          className='reviews-list'
-          style={{ 
-            backgroundImage: `url(https://image.tmdb.org/t/p/w500${show.backdrop_path})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center'
-          }}
-        >
-          <p>Sem reviews por enquanto</p>
+        <div className='reviews'>
+          <div 
+            className='reviews-list'
+            style={{ 
+              backgroundImage: `url(https://image.tmdb.org/t/p/w500${show.backdrop_path})`,
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center'
+            }}
+          >
+            <p>Sem reviews por enquanto</p>
+          </div>
+          <div className="reviews-input">
+            <input 
+              className='input-post' 
+              type="text" 
+              placeholder="Review the show..."
+              name='content'
+              value={newReview.review.content}
+              onChange={handleChange}
+              required
+            />
+            <button 
+              type="submit" 
+              className="btn btn-primary"
+              onClick={handleCreateButtonClick}
+            >
+              Send
+            </button>
+          </div>
         </div>
-          <div class="reviews-input">
-          <input 
+      ) : (
+        <div className='reviews'>
+          <div 
+            className='reviews-list'
+            style={{ 
+              backgroundImage: `url(https://image.tmdb.org/t/p/w500${show.backdrop_path})`,
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center'
+            }}
+          >
+            {review.map((review) => (
+              <div
+                className='single-review'
+                key={review.id}
+              >
+                <p>{review.content}</p>
+                <p>{review.author}</p>
+              </div>
+            ))}
+          </div>
+          <div className="reviews-input">
+            <input 
               className='input-post' 
               type="text" 
               placeholder="Review the show..."
@@ -117,51 +148,13 @@ const Reviews = () => {
               type="submit" 
               className="btn btn-primary"
               onClick={handleCreateButtonClick}
-              // disabled={!user}
             >
               Send
             </button>
           </div>
-      </div>
-      ) : (
-        <div className='reviews'>
-          {review.map((review) => (
-            <>
-            <div
-              className='single-review'
-              key={review.id}
-            >
-              <p>{review.content}</p>
-              <p>{review.author}</p>
-            </div>
-            
-            </>
-          ))}
-          <div class="reviews-input">
-            <input 
-                className='input-post' 
-                type="text" 
-                placeholder="Review the show..."
-                name='content'
-                value={newReview.review.content}
-                onChange={handleChange}
-                required
-                // readOnly={!user}
-              />
-              <button 
-                type="submit" 
-                className="btn btn-primary"
-                onClick={handleCreateButtonClick}
-                // disabled={!user}
-              >
-                Send
-              </button>
-            </div>
         </div>
       )}
     </div>
   )
-  
 }
-
 export default Reviews;

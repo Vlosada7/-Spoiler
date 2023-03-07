@@ -5,7 +5,6 @@ import {
   SignUp
 } from "@clerk/clerk-react";
 import {
-  BrowserRouter,
   Route,
   Router,
   Routes,

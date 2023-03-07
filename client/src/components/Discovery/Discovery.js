@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import { useHistory } from 'react-router-dom';
 import "./Discovery.css";
 import { discover } from "../../ApiService";
 import { getShow } from "../../ApiService";
 import { Link } from "react-router-dom";
-import Show from "../Show/Show";
 import { useUser } from '@clerk/clerk-react'
 
 const Discovery = () => {

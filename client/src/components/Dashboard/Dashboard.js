@@ -7,6 +7,9 @@ import Show from "../Show/Show";
 import Categories from "../Categories/Categories";
 import CategorieSelected from "../Categorie-selected/Categorie-selected";
 import Reviews from "../Reviews/Reviews";
+import SearchResults from "../SearchResult/SearchResults";
+import Season from "../Season/Season";
+import SeasonNumber from "../SeasonNumber/SeasonNumber";
 
 const Dashboard = () => {
 	return (
@@ -18,7 +21,10 @@ const Dashboard = () => {
 				<Route path="/categories" element={<Categories />} />
 				<Route path="/categorie/:name" element={<CategorieSelected />} />
 				<Route path="/tv/:id/reviews" element={<Reviews />} />
+				<Route path="/show/:id/seasons" element={<Season />} />
+				<Route path="/show/:id/seasons/:seasonId" element={<SeasonNumber />} />
 				{/* 
+				<Route path="/searchresults" element={<SearchResults />}/>
         <Route path='/surprise-me' element={<SurpriseMe />} />
         <Route path='/profile' element={<Profile />} /> */}
 			</Routes>
