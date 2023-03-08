@@ -9,18 +9,6 @@
   align-content: center;
 }
 
-/* .categorie {
-  display: inline-block;
-  text-align: center;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-  height: 10vh;
-  width: 20vh;
-} */
-
 .categorie {
   color: #fff;
   border-bottom: 5px solid #ca0202;
@@ -33,4 +21,5 @@
   box-shadow: 0px 0px 20px #e5b4fa;
   transform: translate(0px, -5px);
   transition: transform 0.5s;
+  color: black;
 }

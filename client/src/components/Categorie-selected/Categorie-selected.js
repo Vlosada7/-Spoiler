@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { findByCat } from "../../ApiService";
 import { Link } from "react-router-dom";
 import "./Categorie-selected.css";
+import {FiArrowLeftCircle} from 'react-icons/fi'
 
 const CategorieSelected = () => {
 	const [categorie, setCategorie] = useState([]);
@@ -26,6 +27,14 @@ const CategorieSelected = () => {
 		<div>
 			<p>{name}</p>
 			<div className="shows-list">
+				<div>
+			<Link to={"/categories"}>
+          <button className="btn-back">
+            <FiArrowLeftCircle size={40} color="rgba(255, 255, 255, 1)"/>
+          </button>
+        </Link>
+
+				</div>
 				{categorie.map((show) => {
 					if (!show.poster_path) {
 						return null;

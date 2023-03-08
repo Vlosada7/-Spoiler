@@ -45,6 +45,9 @@ const Episodes = () => {
         <h3>Episode overview:</h3>
         <p>{episode.overview}</p>
         <p>Episode average: {episode.vote_average}</p>
+        <Link to={`/tv/${id}/reviews`}>
+							<button className="btn btn-2">Reviews of the episode</button>
+				</Link>
         
       </div>
 

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { getFindShow } from '../../ApiService';
 import { isEmpty } from "lodash";
 
+
 const SearchResults = () => {
   const [newSearch, setNewSearch] = useState({
     query: ''
@@ -60,7 +61,7 @@ const SearchResults = () => {
           </div>
         ): (
           showResults.some((show) => show.poster_path) ? (
-            <div>              
+            <div>          
               {showResults.map((show) => (
                 show.poster_path && (
                   <div

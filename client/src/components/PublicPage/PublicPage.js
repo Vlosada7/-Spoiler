@@ -1,6 +1,7 @@
 import { SignInButton } from "@clerk/clerk-react";
 import React from "react";
 import './PublicPage.css'
+import logo from './spoiler.png'
 
 
 const PublicPage = () => {
@@ -13,8 +14,22 @@ const PublicPage = () => {
 
       }}
       >
-        <div>
-          <SignInButton />
+        <div className='header-public'>
+        <img
+          src={logo}
+          alt="Logo"
+          className='logo-public'
+        />
+      </div>
+      <div className="text-public">
+        <h1>A social media for TV show's without spoilers</h1>
+      </div>
+        <div className="sign-in">
+          <SignInButton mode='modal'>
+            <button className="btn btn-sign">
+              Sign in
+            </button>
+          </SignInButton>
         </div>
       </div>
   );

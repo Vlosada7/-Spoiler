@@ -29,7 +29,7 @@ const Home = () => {
 	return (
 		<div>
 			{isEmpty(showList) ? (
-				<p>Sem séries assistidas por enquanto</p>
+				<p>No saved TV shows for now.</p>
 			) : (
 				<div className="shows-list">
 					{showList.map((show) => (

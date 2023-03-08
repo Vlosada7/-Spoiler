@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getShow, deleteShow } from "../../ApiService";
+import { getShow, deleteShow, getFavs } from "../../ApiService";
 import { useParams } from "react-router-dom";
 import "./Show.css";
 import Checkbox from "../Checkbox/Checkbox";
@@ -12,6 +12,7 @@ const Show = () => {
 	const { id } = useParams();
 	const [isChecked, setIsChecked] = useState(false);
 	const { user } = useUser();
+	
 
 	function handleCheckboxClick() {
 		setIsChecked(!isChecked);
@@ -27,12 +28,34 @@ const Show = () => {
 			try {
 				const response = await getShow(id);
 				setShow(response);
+				
 			} catch (error) {
 				console.error(error);
 			}
 		};
 		showCard();
 	}, [id]);
+
+	useEffect(() => {
+		const checkFav = async () => {
+			try {
+				const response = await getFavs(user);
+				const favObj =  response.map(obj => {
+					if(obj.id===id) {
+						console.log(obj.id)
+						setIsChecked(true);
+					} else {
+						setIsChecked(false);
+					}
+				})
+
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		checkFav();
+	})
+
 	
 
 	function handleClick(showid) {
@@ -63,9 +86,9 @@ const Show = () => {
 					<Checkbox
 						id="myCheckbox"
 						onClick={handleCheckboxClick}
-						checked={isChecked ? true : false}
+						isChecked={isChecked}
+						props={id}
 					/>
-					
 				</div>
 				<div className="seasons-review">
 						<Link to={`/show/${show.id}/seasons`}>
@@ -76,7 +99,7 @@ const Show = () => {
 							<button className="btn btn-2">Reviews of the show</button>
 						</Link>
 						<br></br>
-						<button className="btn btn-3" onClick={() => handleClick(show.id)}>DELETE</button>
+						<button className="btn btn-3" onClick={() => handleClick(show.id)}>DELETE FROM HOME</button>
 				</div>
 			</div>
 		</div>

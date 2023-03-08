@@ -6,6 +6,8 @@ import { getReviews } from '../../ApiService';
 import './Reviews.css'
 import { getShow } from '../../ApiService';
 import { postReview } from '../../ApiService';
+import { Link } from 'react-router-dom';
+import {FiArrowLeftCircle} from 'react-icons/fi'
 
 const Reviews = () => {
   const { id } = useParams();
@@ -81,7 +83,15 @@ const Reviews = () => {
   return (
     <div className='principal'>
       {isEmpty(review) ? (
+        
         <div className='reviews'>
+          <div>
+        <Link to={`/show/${id}`}>
+          <button className="btn-back">
+            <FiArrowLeftCircle size={40} color="rgba(255, 255, 255, 1)"/>
+          </button>
+        </Link>
+      </div>
           <div 
             className='reviews-list'
             style={{ 
@@ -91,7 +101,7 @@ const Reviews = () => {
               backgroundPosition: 'center'
             }}
           >
-            <p>Sem reviews por enquanto</p>
+            <p>No reviews for now. Be the first to give your opinion about the series.</p>
           </div>
           <div className="reviews-input">
             <input 
@@ -105,7 +115,7 @@ const Reviews = () => {
             />
             <button 
               type="submit" 
-              className="btn btn-primary"
+              className="btn btn-1"
               onClick={handleCreateButtonClick}
             >
               Send
@@ -114,6 +124,13 @@ const Reviews = () => {
         </div>
       ) : (
         <div className='reviews'>
+           <div>
+        <Link to={`/show/${id}`}>
+          <button className="btn-back">
+            <FiArrowLeftCircle size={40} color="rgba(255, 255, 255, 1)"/>
+          </button>
+        </Link>
+      </div>
           <div 
             className='reviews-list'
             style={{ 
@@ -146,7 +163,7 @@ const Reviews = () => {
             />
             <button 
               type="submit" 
-              className="btn btn-primary"
+              className="btn btn-1"
               onClick={handleCreateButtonClick}
             >
               Send

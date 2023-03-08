@@ -27,7 +27,7 @@ const Dashboard = () => {
 				<Route path="/tv/:id/season/:seasonNumber/episode/:epNumber" element={<Episodes />} />
 				<Route path="/search" element={<SearchResults />}/>
 				{/* 
-				<Route path="/searchresults" element={<SearchResults />}/>
+				
         <Route path='/surprise-me' element={<SurpriseMe />} />
         <Route path='/profile' element={<Profile />} /> */}
 			</Routes>
