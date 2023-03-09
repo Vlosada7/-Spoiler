@@ -42,7 +42,6 @@ const Show = () => {
 				const response = await getFavs(user);
 				const favObj =  response.map(obj => {
 					if(obj.id===id) {
-						console.log(obj.id)
 						setIsChecked(true);
 					} else {
 						setIsChecked(false);

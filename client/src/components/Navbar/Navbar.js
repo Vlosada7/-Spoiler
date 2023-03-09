@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'
 import { SignOutButton } from '@clerk/clerk-react';
-import menuIcon from './risco_menu.png'
 
 
 const Navbar = () => {
@@ -12,7 +11,7 @@ const Navbar = () => {
     <nav className='navbar'>
       <ul className='menu'>
         <li>
-        <Link to={`/home`}>HOME</Link>
+        <Link to='/home'>HOME</Link>
         </li>
         <li>
           <Link to='/discovery'>DISCOVERY</Link>

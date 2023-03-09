@@ -36,7 +36,7 @@ function ClerkProviderWithRoutes () {
             element={<SignUp routing="path" path="/sign-up" />}
           />
           <Route 
-            path="/protected"
+            path="/home"
             element={
               <SignedIn>
                 <div className="App">

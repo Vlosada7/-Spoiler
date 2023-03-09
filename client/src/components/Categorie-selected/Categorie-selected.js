@@ -28,7 +28,7 @@ const CategorieSelected = () => {
 			<p>{name}</p>
 			<div className="shows-list">
 				<div>
-			<Link to={"/categories"}>
+			<Link to="/categories">
           <button className="btn-back">
             <FiArrowLeftCircle size={40} color="rgba(255, 255, 255, 1)"/>
           </button>

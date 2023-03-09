@@ -16,7 +16,6 @@ const Episodes = () => {
       try {
         const response = await getEp(id, seasonNumber)
         setEpisode(response.episodes.at(epIndex))
-        console.log(response.episodes.at(epIndex))
       } catch (error) {
         console.error('Error: ', error)
       }

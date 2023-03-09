@@ -1,26 +1,9 @@
-const BASE_URL = 'http://localhost:4000';
-// const API_URL = 'https://api.themoviedb.org/3/';
-// const API_IMAGES = 'http://image.tmdb.org/t/p/';
-// const API_KEY = '5237caacb7e0c70115c1cc6b132a3767'
-
-// const API_URL_DISCOVERY = 'https://api.themoviedb.org/3/discover/tv?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&sort_by=popularity.desc&page=1&with_watch_monetization_types=free&with_status=0&with_type=0';
-
-const API_URL_DISCOVERY = 'https://api.themoviedb.org/3/tv/popular?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&page=1';
-
-// const API_URL_SEARCH = 'https://api.themoviedb.org/3/search/tv?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&page=1&query=(Game%20Of%20Thrones)&include_adult=false'
-
-const API_URL_CATEGORIES = 'https://api.themoviedb.org/3/genre/tv/list?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US';
-
-// const API_URL_FIND = 'https://api.themoviedb.org/3/tv/{tv_id}?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US';
-
-// const API_CLERK = 'pk_test_Y2hvaWNlLXJvdWdoeS05NC5jbGVyay5hY2NvdW50cy5kZXYk';
-
 //User:
 export const getFavs = async (fullUser) => {
   const userInfo = {
     username: fullUser.username
   }
-  const all = await fetch(BASE_URL + `/home/${userInfo.username}`);
+  const all = await fetch(`${process.env.REACT_APP_BASE_SERVER_URL}/home/${userInfo.username}`);
   const favIds = await all.json();
   
   const showList = await Promise.all(favIds.map(async ({ id }) => {
@@ -32,14 +15,13 @@ export const getFavs = async (fullUser) => {
 }
 
 export const checkFavs = async (id) => {
-  const all = await fetch(BASE_URL + '/home');
+  const all = await fetch(`${process.env.REACT_APP_BASE_SERVER_URL}/home`);
   return all.json();
 }
 
 export const deleteShow = async (info) => {
-  // console.log(info)
   try {
-    const response = await fetch(`${BASE_URL}/${info.username}/show/${info.id}`, {
+    const response = await fetch(`${process.env.REACT_APP_BASE_SERVER_URL}/${info.username}/show/${info.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -59,7 +41,7 @@ export const deleteShow = async (info) => {
 }
 
 export const getFavId = async (id) => {
-  return fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US`, {
+  return fetch(`${process.env.REACT_APP_BASE_API_URL}tv/${id}?api_key=${process.env.REACT_APP_BASE_API_KEY}&language=en-US`, {
     method: "GET", 
     headers: {'Content-Type': 'application/json'},
   })
@@ -73,7 +55,7 @@ export const saveShow = async (info) => {
     id: info.id
   }
   
-  const response = await fetch(BASE_URL + `/show/${allInfo.id}`, {
+  const response = await fetch(`${process.env.REACT_APP_BASE_SERVER_URL}/show/${allInfo.id}`, {
     method: "POST", 
     headers: {
       "Content-Type":"application/json",
@@ -88,7 +70,7 @@ export const saveShow = async (info) => {
 }
 
 export const discover = async () => {
-  return fetch(API_URL_DISCOVERY, {
+  return fetch(`${process.env.REACT_APP_BASE_API_URL}tv/popular?api_key=${process.env.REACT_APP_BASE_API_KEY}&language=en-US`, {
     method: 'GET', 
     headers: {'Content-Type': 'application/json'}, 
   })
@@ -97,7 +79,7 @@ export const discover = async () => {
 };
 
 export const getCategories = async () => {
-  return fetch(API_URL_CATEGORIES, {
+  return fetch(`${process.env.REACT_APP_BASE_API_URL}genre/tv/list?api_key=${process.env.REACT_APP_BASE_API_KEY}&language=en-US`,{
     method: 'GET', 
     headers: {'Content-Type': 'application/json'},
   })
@@ -106,7 +88,7 @@ export const getCategories = async () => {
 }
 
 export const getShow = async (showId) => {
-  return fetch(`https://api.themoviedb.org/3/tv/${showId}?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US`, {
+  return fetch(`${process.env.REACT_APP_BASE_API_URL}tv/${showId}?api_key=${process.env.REACT_APP_BASE_API_KEY}&language=en-US`, {
     method: 'GET', 
     headers: {'Content-Type': 'application/json'},
   })
@@ -115,7 +97,7 @@ export const getShow = async (showId) => {
 }
 
 export const findByCat = async (catName) => {
-  return fetch(`https://api.themoviedb.org/3/search/tv?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&page=1&query=${catName}&include_adult=false`, {
+  return fetch(`${process.env.REACT_APP_BASE_API_URL}search/tv?api_key=${process.env.REACT_APP_BASE_API_KEY}&language=en-US&page=1&query=${catName}&include_adult=false`, {
     method: 'GET', 
     headers: {'Content-Type': 'application/json'},
   })
@@ -124,7 +106,7 @@ export const findByCat = async (catName) => {
 }
 
 export const getFindShow = async (query) => {
-  return fetch(`https://api.themoviedb.org/3/search/tv?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US&page=1&query=${query}&include_adult=false`, {
+  return fetch(`${process.env.REACT_APP_BASE_API_URL}search/tv?api_key=${process.env.REACT_APP_BASE_API_KEY}&language=en-US&page=1&query=${query}&include_adult=false`, {
     method: 'GET', 
     headers: {'Content-Type':'application/json'},
   })
@@ -134,7 +116,7 @@ export const getFindShow = async (query) => {
 
 export const getEp = async (id, seasonNumber) => {
   return fetch(`
-  https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=5237caacb7e0c70115c1cc6b132a3767&language=en-US`, {
+  ${process.env.REACT_APP_BASE_API_URL}/tv/${id}/season/${seasonNumber}?api_key=${process.env.REACT_APP_BASE_API_KEY}&language=en-US`, {
     method: 'GET', 
     headers: {'Content-Type':'application/json'},
   })
@@ -148,14 +130,13 @@ export const getReviews= async (reviewId) => {
   const reviewInfo = {
     id: reviewId
   }
-  const all = await fetch(BASE_URL + `/tv/${reviewInfo.id}/reviews`);
+  const all = await fetch(`${process.env.REACT_APP_BASE_SERVER_URL}/tv/${reviewInfo.id}/reviews`);
   
   return all.json();
 }
 
 export const postReview = async (review) => {
-  // console.log(review);
-  const response = await fetch(BASE_URL + `/tv/${review.id}/reviews`, {
+  const response = await fetch(`${process.env.REACT_APP_BASE_SERVER_URL}/tv/${review.id}/reviews`, {
     method: "POST", 
     headers: {
       "Content-Type":"application/json",

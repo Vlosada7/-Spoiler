@@ -17,7 +17,6 @@ const Season = () => {
         const response = await getShow(id)
         setShow(response)
         setSeasons(response.seasons)
-        console.log(response)
       } catch (error) {
         console.error("erro:", error);        
       }

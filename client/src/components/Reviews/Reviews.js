@@ -159,7 +159,6 @@ const Reviews = () => {
               value={newReview.review.content}
               onChange={handleChange}
               required
-              // readOnly={!user}
             />
             <button 
               type="submit" 
